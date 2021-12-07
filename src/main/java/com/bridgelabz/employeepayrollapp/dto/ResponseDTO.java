@@ -5,8 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-public class EmployeeDTO {
-    private int id;
-    private String name;
-    private long salary;
+@AllArgsConstructor
+@NoArgsConstructor
+public class ResponseDTO {
+    private String message;
+    private Object data;
 }
