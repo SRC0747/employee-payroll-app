@@ -15,15 +15,14 @@ public class Employee {
     private String name;
     private long salary;
 
-    public Employee() {
-    }
 
-    public Employee(EmployeeDTO employeeDTO) {
+
+    /*public Employee(EmployeeDTO employeeDTO) {
         this.updateEmployeePayrollData(employeeDTO);
     }
 
-    public void updateEmployeePayrollData(EmployeeDTO employeePayrollDto) {
+   public void updateEmployeePayrollData(EmployeeDTO employeePayrollDto) {
         this.name = name;
         this.salary = salary;
-    }
+    }*/
 }

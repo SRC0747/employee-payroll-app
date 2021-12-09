@@ -1,29 +1,28 @@
 package com.bridgelabz.employeepayrollapp.service;
 
 import com.bridgelabz.employeepayrollapp.dto.EmployeeDTO;
-import com.bridgelabz.employeepayrollapp.exception.CustomException;
 import com.bridgelabz.employeepayrollapp.model.Employee;
 import com.bridgelabz.employeepayrollapp.repository.EmployeePayrollRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.PostRemove;
 import java.util.*;
 
 @Service
 public class EmployeePayrollService implements IEmployeePayrollService {
 
-    private final List<Employee> employeePayRollDataList = new ArrayList<>();
+    private static final String EMPLOYEE_DETAILS_DELETED = "Employee details of corresponding id are deleted successfully";
+    private static final String EMPLOYEE_DETAILS_NOT_FOUND = "Employee details of corresponding id are not found";
 
     @Autowired
     private EmployeePayrollRepository employeePayrollRepository;
 
     @Override
     public Employee addEmployee(EmployeeDTO employeeDTO) {
-        Employee employeePayRollData = null;
-        employeePayRollData = new Employee(employeeDTO);
-        employeePayRollDataList.add(employeePayRollData);
-        return employeePayrollRepository.save(employeePayRollData);
+        Employee employee = new Employee();
+        employee.setName(employeeDTO.getName());
+        employee.setSalary(employeeDTO.getSalary());
+        return employeePayrollRepository.save(employee);
     }
 
     @Override
@@ -34,6 +33,17 @@ public class EmployeePayrollService implements IEmployeePayrollService {
     @Override
     public Employee getEmployeeById(int empId) {
         return employeePayrollRepository.findById(empId)
-                .orElseThrow(()-> new CustomException("Employee with this employeeId "+empId+" does not exists!!"));
+                .orElse(null);
     }
+
+    @Override
+    public Employee updateEmployeePayrollById(int empId, EmployeeDTO employeeDTO) {
+        Employee employee = employeePayrollRepository.findById(empId)
+                .orElse(null);
+        employee.setName(employeeDTO.getName());
+        employee.setSalary(employeeDTO.getSalary());
+        //employeePayRollData.updateEmployeePayrollData(employeeDTO);
+        return employeePayrollRepository.save(employee);
+    }
+
 }

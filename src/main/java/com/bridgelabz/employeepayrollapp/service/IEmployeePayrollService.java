@@ -12,4 +12,6 @@ public interface IEmployeePayrollService {
     List<Employee> getEmployeePayrollData();
 
     Employee getEmployeeById(int empId);
+
+    Employee updateEmployeePayrollById(int empId, EmployeeDTO employeeDTO);
 }
