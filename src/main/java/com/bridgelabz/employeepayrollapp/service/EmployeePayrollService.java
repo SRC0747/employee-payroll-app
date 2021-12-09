@@ -46,4 +46,13 @@ public class EmployeePayrollService implements IEmployeePayrollService {
         return employeePayrollRepository.save(employee);
     }
 
+    @Override
+    public String deleteEmployeePayroll(int empId) {
+        Optional<Employee> employee = employeePayrollRepository.findById(empId);
+        if (employee.isPresent()) {
+            employeePayrollRepository.delete(employee.get());
+            return EMPLOYEE_DETAILS_DELETED;
+        }
+        return EMPLOYEE_DETAILS_NOT_FOUND;
+    }
 }

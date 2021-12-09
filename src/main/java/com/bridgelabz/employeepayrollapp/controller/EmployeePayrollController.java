@@ -56,6 +56,12 @@ public class EmployeePayrollController {
         ResponseDTO responseDTO = new ResponseDTO("Update Employee Payroll Data For ", employeePayRollData);
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
-
-
+    
+    @DeleteMapping("/delete/{empId}")
+    public ResponseEntity<ResponseDTO> deleteEmployeePayroll(
+            @PathVariable(value = "empId") int empId) {
+        employeePayrollService.deleteEmployeePayroll(empId);
+        ResponseDTO responseDto = new ResponseDTO("Deleted Successfully", "deleted id: " + empId);
+        return new ResponseEntity<ResponseDTO>(responseDto, HttpStatus.OK);
+    }
 }
