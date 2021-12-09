@@ -28,7 +28,15 @@ public class EmployeePayrollController {
             @RequestBody EmployeeDTO employeePayrollDto) {
         Employee employeePayRollData = null;
         employeePayRollData = employeePayrollService.addEmployee(employeePayrollDto);
-        ResponseDTO responseDto = new ResponseDTO("Created Employee Payroll Data For ", employeePayRollData);
-        return new ResponseEntity<ResponseDTO>(responseDto, HttpStatus.OK);
+        ResponseDTO responseDTO = new ResponseDTO("Created Employee Payroll Data For ", employeePayRollData);
+        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+    }
+
+    @GetMapping("/get")
+    public ResponseEntity<ResponseDTO> getEmployeePayrollData() {
+        List<Employee> employeePayRollData = null;
+        employeePayRollData = employeePayrollService.getEmployeePayrollData();
+        ResponseDTO responseDTO = new ResponseDTO("Get Call Success", employeePayRollData);
+        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 }
