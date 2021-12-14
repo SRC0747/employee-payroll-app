@@ -68,29 +68,29 @@ class EmployeePayrollControllerTest {
         assertEquals(expectedResponseEntity, actualResponseString);
     }
 
-//    @Test
-//    void whenEditEmployeeMethodIsCalled_ShouldUpdateEmployeeAndGenerateSuccessMessage() {
-//        String successString = "Employee edited successfully";
-//        ResponseEntity<String> expectedResponseEntity = new ResponseEntity<>(successString, HttpStatus.OK);
-//        int id = 1;
-//        EmployeeDTO employeeDTO = new EmployeeDTO();
-//        employeeDTO.setName("Sampriti");
-//        employeeDTO.setGender("Female");
-//        employeeDTO.setDepartment("Backend");
-//        when(employeePayrollService.updateEmployeePayrollById(id, employeeDTO)).thenReturn(successString);
-//        ResponseEntity<String> actualResponseString = employeePayrollController.updateEmployeePayroll(id, employeeDTO);
-//        assertEquals(expectedResponseEntity, actualResponseString);
-//    }
-//
-//    @Test
-//    void whenDeleteEmployeeMethodIsCalled_ShouldDeleteEmployeeAndGenerateSuccessMessage() {
-//        String successString = "Employee delete successful";
-//        ResponseEntity<String> expectedResponseEntity = new ResponseEntity<>(successString, HttpStatus.OK);
-//        int id = 1;
-//        when(employeePayrollService.deleteEmployeePayroll(id)).thenReturn(successString);
-//        ResponseEntity<String> actualResponseString = employeePayrollController.deleteEmployeePayroll(id);
-//        assertEquals(expectedResponseEntity, actualResponseString);
-//    }
+    @Test
+    void whenUpdateEmployeeMethodIsCalled_ShouldUpdateEmployeeAndGenerateSuccessMessage() {
+        String successString = "Update Employee Payroll Data For";
+        ResponseEntity<String> expectedResponseEntity = new ResponseEntity<>(successString, HttpStatus.OK);
+        int id = 1;
+        EmployeeDTO employeeDTO = new EmployeeDTO();
+        employeeDTO.setName("Sampriti");
+        employeeDTO.setGender("Female");
+        employeeDTO.setDepartment("Backend");
+        when(employeePayrollService.updateEmployeePayrollById(id, employeeDTO)).thenReturn(successString);
+        ResponseEntity<String> actualResponseString = employeePayrollController.updateEmployeePayroll(id, employeeDTO);
+        assertEquals(expectedResponseEntity, actualResponseString);
+    }
+
+    @Test
+    void whenDeleteEmployeeMethodIsCalled_ShouldDeleteEmployeeAndGenerateSuccessMessage() {
+        String successString = "Deleted Successfully";
+        ResponseEntity<String> expectedResponseEntity = new ResponseEntity<>(successString, HttpStatus.OK);
+        int id = 1;
+        when(employeePayrollService.deleteEmployeePayroll(id)).thenReturn(successString);
+        ResponseEntity<String> actualResponseString = employeePayrollController.deleteEmployeePayroll(id);
+        assertEquals(expectedResponseEntity, actualResponseString);
+    }
 
 
 }
