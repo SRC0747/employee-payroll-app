@@ -24,11 +24,12 @@ public class EmployeePayrollController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<ResponseDTO> addEmployeePayrollData(
+    public ResponseEntity<String> addEmployeePayrollData(
             @RequestBody EmployeeDTO employeePayrollDto) {
-        Employee employeePayRollData = employeePayrollService.addEmployee(employeePayrollDto);
+        String employeePayRollData = employeePayrollService.addEmployee(employeePayrollDto);
         ResponseDTO responseDTO = new ResponseDTO("Created Employee Payroll Data For ", employeePayRollData);
-        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+       // return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+        return new ResponseEntity<>("Created Employee Payroll Data For", HttpStatus.OK);
     }
 
     @GetMapping("/get")
@@ -53,6 +54,7 @@ public class EmployeePayrollController {
         String employeePayRollData = employeePayrollService.updateEmployeePayrollById(empId, employeeDTO);
         ResponseDTO responseDTO = new ResponseDTO("Update Employee Payroll Data For ", employeePayRollData);
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+
     }
 
     @DeleteMapping("/delete/{empId}")

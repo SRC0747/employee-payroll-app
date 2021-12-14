@@ -24,14 +24,23 @@ public class EmployeePayrollService implements IEmployeePayrollService {
     @Autowired
     private EmployeePayrollBuilder employeePayrollBuilder;
 
+//    @Override
+//    public Employee addEmployee(EmployeeDTO employeeDTO) {
+//        //Employee employee = modelMapper.map(employeeDTO, Employee.class);
+//        Employee employee = new Employee();
+//        employee = employeePayrollBuilder.buildEmployeePayrollEntity(employeeDTO, employee);
+//        //BeanUtils.copyProperties(employeeDTO, employee);
+//        employeePayrollRepository.save(employee);
+//        return employeePayrollRepository.save(employee);
+//    }
+
     @Override
-    public Employee addEmployee(EmployeeDTO employeeDTO) {
-        //Employee employee = modelMapper.map(employeeDTO, Employee.class);
+    public String addEmployee(EmployeeDTO employeeDto) {
         Employee employee = new Employee();
-        employee = employeePayrollBuilder.buildEmployeePayrollEntity(employeeDTO, employee);
-        //BeanUtils.copyProperties(employeeDTO, employee);
+        employee = employeePayrollBuilder.buildEmployeePayrollEntity(employeeDto, employee);
         employeePayrollRepository.save(employee);
-        return employeePayrollRepository.save(employee);
+        //return employeePayrollRepository.save(employee);
+        return "Added successfully";
     }
 
     @Override
@@ -49,6 +58,7 @@ public class EmployeePayrollService implements IEmployeePayrollService {
     public String updateEmployeePayrollById(int empId, EmployeeDTO employeeDTO) {
         Employee employee = findEmployeeById(empId);
         employee = employeePayrollBuilder.buildEmployeePayrollEntity(employeeDTO, employee);
+        System.out.println(employee.toString());
         employeePayrollRepository.save(employee);
         return EMPLOYEE_DETAILS_UPDATED_SUCCESSFULLY;
     }

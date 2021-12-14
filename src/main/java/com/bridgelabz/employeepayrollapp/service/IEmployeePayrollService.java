@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IEmployeePayrollService {
 
-    Employee addEmployee(EmployeeDTO employeePayrollDto);
+    String addEmployee(EmployeeDTO employeePayrollDto);
 
     List<Employee> getEmployeePayrollData();
 
