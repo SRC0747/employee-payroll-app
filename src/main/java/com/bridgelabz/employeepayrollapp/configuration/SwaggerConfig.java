@@ -20,6 +20,14 @@ import javax.servlet.ServletContext;
 import static com.google.common.base.Predicates.not;
 import static springfox.documentation.builders.PathSelectors.regex;
 
+/**
+ * Purpose : Implement swagger to handle the run application over server and also in other app
+ *
+ * @author : Sampriti Roy Chowdhury
+ * @version : 0.0.1
+ * @since : 15-12-2021
+ */
+
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig  {

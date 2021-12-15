@@ -11,6 +11,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+/**
+ * Purpose : Implement AOP to handle logging mechanism so than dry principle will not be affected
+ *
+ * @author : Sampriti Roy Chowdhury
+ * @version : 0.0.1
+ * @since : 15-12-2021
+ */
+
 @Aspect
 @Component
 @Slf4j
@@ -18,11 +26,21 @@ public class LoggingAdvice {
 
     //Logger log = LoggerFactory.getLogger(LoggingAdvice.class);
 
+    /**
+     * Purpose : This method is used to apply the PointCut(logging mechanism) around the whole application
+     */
     @Pointcut(value="execution(* com.bridgelabz.employeepayrollapp.*.*.*(..) )")
     public void myPointCut() {
 
     }
 
+    /**
+     * Purpose : This method is used to define the source methods and class to invoke log and also getting response after logging execution
+     *
+     * @param pjp defines the proceeding Join Point to access the logging mechanism
+     * @return the response after execution of log
+     * @throws Throwable throws an exception if occurred
+     */
     @Around("myPointCut()")
     public Object applicationLogger(ProceedingJoinPoint pjp) throws Throwable {
         ObjectMapper mapper = new ObjectMapper(); //to get the output in JSON format

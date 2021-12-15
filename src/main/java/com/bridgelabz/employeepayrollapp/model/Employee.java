@@ -7,6 +7,14 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+/**
+ * Purpose : To demonstrate all the fields of employee in the entity databse format
+ *
+ * @author : Sampriti Roy Chowdhury
+ * @version : 0.0.1
+ * @since : 15-12-2021
+ */
+
 @Data
 @Table(name = "employee")
 @Entity

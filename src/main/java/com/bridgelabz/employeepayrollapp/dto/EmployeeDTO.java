@@ -6,6 +6,13 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+/**
+ * Purpose : To demonstrate various fields of employee in DTo
+ *
+ * @author : Sampriti Roy Chowdhury
+ * @version : 0.0.1
+ * @since : 15-12-2021
+ */
 
 @Data
 @AllArgsConstructor
