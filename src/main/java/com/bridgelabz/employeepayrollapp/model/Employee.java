@@ -15,12 +15,19 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="EMP_ID")
     private int id;
+
     @Column(name = "NAME", length=25)
     private String name;
+
     @Column(name = "GENDER", length = 11)
     private String gender;
+
     @Column(name = "DEPARTMENT", length = 35)
     private String department;
+
     @Column(name = "SALARY", length = 30)
     private long salary;
+
+    @Column(name = "NOTES", length = 40)
+    private String notes;
 }

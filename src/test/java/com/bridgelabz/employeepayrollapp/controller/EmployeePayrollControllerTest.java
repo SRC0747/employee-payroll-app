@@ -39,20 +39,21 @@ class EmployeePayrollControllerTest {
         employee1.setGender("Female");
         employee1.setDepartment("Backend");
         employee1.setSalary((long) 32639.25);
+        employee1.setNotes("Regular");
 
         Employee employee2 = new Employee();
         employee2.setName("Rita");
         employee2.setGender("Female");
         employee2.setDepartment("Backend");
         employee2.setSalary((long) 556639.25);
+        employee2.setNotes("Regular");
 
         String successString = "Get Call Success";
-        int actual = 200;
-       // ResponseEntity<String> expectedResponseEntity = new ResponseEntity<>(successString, HttpStatus.OK);
         when(employeePayrollService.getEmployeePayrollData()).thenReturn(employee);
-        int actualValue = employeePayrollController.getEmployeePayrollData().getStatusCodeValue();
-        assertEquals(actual, actualValue);
+        HttpStatus actualValue = employeePayrollController.getEmployeePayrollData().getStatusCode();
+        assertEquals(HttpStatus.OK, actualValue);
         }
+
 
     @Test
     void whenAddEmployeeMethodIsCalled_ShouldAddEmployeeAndGenerateSuccessMessage() {
