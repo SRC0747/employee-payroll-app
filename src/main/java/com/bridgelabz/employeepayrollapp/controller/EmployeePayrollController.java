@@ -22,7 +22,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-//@RequestMapping("/rest/auth")
 public class EmployeePayrollController {
 
     @Autowired
@@ -49,7 +48,6 @@ public class EmployeePayrollController {
             @RequestBody EmployeeDTO employeePayrollDto) {
         String employeePayRollData = employeePayrollService.addEmployee(employeePayrollDto);
         ResponseDTO responseDTO = new ResponseDTO("Created Employee Payroll Data For ", employeePayRollData);
-       // return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
         return new ResponseEntity<>("Created Employee Payroll Data For", HttpStatus.OK);
     }
 
@@ -68,13 +66,13 @@ public class EmployeePayrollController {
     /**
      * Purpose : This method is used to get the employee data by using particular id
      *
-     * @param empId defines employee id
+     * @param employeeId defines employee id
      * @return employee data corresponding to the  id
      */
-    @GetMapping("/get/{empId}")
+    @GetMapping("/get/{employeeId}")
     public ResponseEntity<ResponseDTO> getEmployeePayrollDataById(
-            @PathVariable int empId) {
-        Employee employeePayRollData = employeePayrollService.findEmployeeById(empId);
+            @PathVariable int employeeId) {
+        Employee employeePayRollData = employeePayrollService.findEmployeeById(employeeId);
         ResponseDTO responseDto = new ResponseDTO("Get Call Success For Id", employeePayRollData);
         return new ResponseEntity<ResponseDTO>(responseDto, HttpStatus.OK);
     }
@@ -82,17 +80,16 @@ public class EmployeePayrollController {
     /**
      * Purpose : This method is used to update the employee data corresponding to the id
      *
-     * @param empId defines the employee id
+     * @param employeeId defines the employee id
      * @param employeeDTO defines the data in DTO format
      * @return message if data is updated successfully
      */
-    @PutMapping("/update/{empId}")
+    @PutMapping("/update/{employeeId}")
     public ResponseEntity<String> updateEmployeePayroll(
-            @PathVariable int empId,
+            @PathVariable int employeeId,
             @RequestBody EmployeeDTO employeeDTO) {
-        String employeePayRollData = employeePayrollService.updateEmployeePayrollById(empId, employeeDTO);
+        String employeePayRollData = employeePayrollService.updateEmployeePayrollById(employeeId, employeeDTO);
         ResponseDTO responseDTO = new ResponseDTO("Update Employee Payroll Data For ", employeePayRollData);
-        //return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
         return new ResponseEntity<>("Update Employee Payroll Data For", HttpStatus.OK);
 
     }
@@ -100,14 +97,14 @@ public class EmployeePayrollController {
     /**
      * Purpose : This method is used to delete the employee details corresponding to it's id
      *
-     * @param empId defines employee id
+     * @param employeeId defines employee id
      * @return message if employee details of corresponding id is deleted successfully
      */
-    @DeleteMapping("/delete/{empId}")
+    @DeleteMapping("/delete/{employeeId}")
     public ResponseEntity<String> deleteEmployeePayroll(
-            @PathVariable int empId) {
-        employeePayrollService.deleteEmployeePayroll(empId);
-        ResponseDTO responseDto = new ResponseDTO("Deleted Successfully", "deleted id: " + empId);
+            @PathVariable int employeeId) {
+        employeePayrollService.deleteEmployeePayroll(employeeId);
+        ResponseDTO responseDto = new ResponseDTO("Deleted Successfully", "deleted id: " + employeeId);
         //return new ResponseEntity<ResponseDTO>(responseDto, HttpStatus.OK);
         return new ResponseEntity<>("Deleted Successfully", HttpStatus.OK);
     }

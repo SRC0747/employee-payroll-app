@@ -24,8 +24,6 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class LoggingAdvice {
 
-    //Logger log = LoggerFactory.getLogger(LoggingAdvice.class);
-
     /**
      * Purpose : This method is used to apply the PointCut(logging mechanism) around the whole application
      */
@@ -41,13 +39,14 @@ public class LoggingAdvice {
      * @return the response after execution of log
      * @throws Throwable throws an exception if occurred
      */
+
     @Around("myPointCut()")
     public Object applicationLogger(ProceedingJoinPoint pjp) throws Throwable {
         ObjectMapper mapper = new ObjectMapper(); //to get the output in JSON format
         String methodName = pjp.getSignature().getName(); //to get the method name
         String className = pjp.getTarget().getClass().toString(); //to get the class name
         Object[] array = pjp.getArgs(); //to get the inputs
-        //before executing the method invoking methoda and class name corresponding the arguments
+        //before executing the method invoking method and class name corresponding the arguments
         log.info("method invoked"+className+" : "+methodName+"()"+"arguments : "
                 +mapper.writeValueAsString(array));
         Object object = pjp.proceed();

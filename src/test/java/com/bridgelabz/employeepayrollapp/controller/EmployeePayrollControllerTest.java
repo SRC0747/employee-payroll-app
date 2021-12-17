@@ -37,14 +37,16 @@ class EmployeePayrollControllerTest {
         Employee employee1 = new Employee();
         employee1.setName("Sampriti");
         employee1.setGender("Female");
-        employee1.setDepartment("Backend");
+        employee1.setDepartments((List.of("Cse")));
+        employee1.setJoiningDate("15/01/2021");
         employee1.setSalary((long) 32639.25);
         employee1.setNotes("Regular");
 
         Employee employee2 = new Employee();
         employee2.setName("Rita");
         employee2.setGender("Female");
-        employee2.setDepartment("Backend");
+        employee2.setDepartments((List.of("Cse")));
+        employee2.setJoiningDate("05/05/2021");
         employee2.setSalary((long) 556639.25);
         employee2.setNotes("Regular");
 
@@ -62,8 +64,10 @@ class EmployeePayrollControllerTest {
         EmployeeDTO employeeDTO = new EmployeeDTO();
         employeeDTO.setName("Sampriti");
         employeeDTO.setGender("Female");
-        employeeDTO.setDepartment("Backend");
+        employeeDTO.setDepartments((List.of("Cse")));
+        employeeDTO.setJoiningDate("15/01/2021");
         employeeDTO.setSalary((long) 32563.26);
+        employeeDTO.setNotes("Regular");
         when(employeePayrollService.addEmployee(employeeDTO)).thenReturn(successString);
         ResponseEntity<String> actualResponseString = employeePayrollController.addEmployeePayrollData(employeeDTO);
         assertEquals(expectedResponseEntity, actualResponseString);
@@ -77,7 +81,9 @@ class EmployeePayrollControllerTest {
         EmployeeDTO employeeDTO = new EmployeeDTO();
         employeeDTO.setName("Sampriti");
         employeeDTO.setGender("Female");
-        employeeDTO.setDepartment("Backend");
+        employeeDTO.setDepartments((List.of("Cse")));
+        employeeDTO.setJoiningDate("15/01/2021");
+        employeeDTO.setNotes("Regular");
         when(employeePayrollService.updateEmployeePayrollById(id, employeeDTO)).thenReturn(successString);
         ResponseEntity<String> actualResponseString = employeePayrollController.updateEmployeePayroll(id, employeeDTO);
         assertEquals(expectedResponseEntity, actualResponseString);
@@ -92,6 +98,5 @@ class EmployeePayrollControllerTest {
         ResponseEntity<String> actualResponseString = employeePayrollController.deleteEmployeePayroll(id);
         assertEquals(expectedResponseEntity, actualResponseString);
     }
-
 
 }

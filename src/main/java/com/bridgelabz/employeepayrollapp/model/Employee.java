@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Purpose : To demonstrate all the fields of employee in the entity databse format
@@ -24,18 +25,22 @@ public class Employee {
     @Column(name="EMP_ID")
     private int id;
 
-    @Column(name = "NAME", length=25)
+    @Column(name = "NAME")
     private String name;
 
-    @Column(name = "GENDER", length = 11)
+    @Column(name = "GENDER")
     private String gender;
 
-    @Column(name = "DEPARTMENT", length = 35)
-    private String department;
+    @ElementCollection
+    @CollectionTable(name = "employee_department", joinColumns = @JoinColumn(name = "id"))
+    private List<String> departments;
 
-    @Column(name = "SALARY", length = 30)
+    @Column(name = "START_DATE")
+    private String joiningDate;
+
+    @Column(name = "SALARY")
     private long salary;
 
-    @Column(name = "NOTES", length = 40)
+    @Column(name = "NOTES")
     private String notes;
 }

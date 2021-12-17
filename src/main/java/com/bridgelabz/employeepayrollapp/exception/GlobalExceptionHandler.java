@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import javax.xml.bind.ValidationException;
 
 /**
- * Purpose : Handle bothe the vallidation and custom exception if it is occurred
+ * Purpose : Handle both the validation and custom exception if it is occurred
  *
  * @author : Sampriti Roy Chowdhury
  * @version : 0.0.1
@@ -31,9 +31,9 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * Purpose : This method is used to handle Vallidation Exception occurred during the handle of vallidation fields
+     * Purpose : This method is used to handle Validation Exception occurred during the handle of validation fields
      *
-     * @param validationException defines exception occurred during vallidation
+     * @param validationException defines exception occurred during validation
      * @return response message if it is occurred
      */
 

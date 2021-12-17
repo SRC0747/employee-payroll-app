@@ -21,7 +21,7 @@ import static com.google.common.base.Predicates.not;
 import static springfox.documentation.builders.PathSelectors.regex;
 
 /**
- * Purpose : Implement swagger to handle the run application over server and also in other app
+ * Purpose : Implement swagger to handle the run application over server and also in other API
  *
  * @author : Sampriti Roy Chowdhury
  * @version : 0.0.1
@@ -31,24 +31,35 @@ import static springfox.documentation.builders.PathSelectors.regex;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig  {
+    /**
+     * Purpose : This method is used to specify the swagger to which API(Application Programming Interface)
+     * to show on Swagger UI(User Interface) console
+     *
+     * @return the docket link which has the information about API(Application Programming Interface)
+     */
     @Bean
-    public Docket api() {
+    public Docket postApi() {
         return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("Employee Payroll")
+                .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.bridgelabz.employeepayrollapp.controller"))
-                .paths(PathSelectors.any())
-                .build()
-                .apiInfo(metadata());
+                .build();
     }
 
-    private ApiInfo metadata() {
-        return new ApiInfoBuilder()
-                .title("Address Book Application API")
-                .description("\"Swagger configuration for application testing\"")
-                .version("0.0.1")
-                .license("Apache 2.0 (example)")
-                .licenseUrl("if there will be any")
-                .contact(new Contact("Sampriti", "www.facebook.com", "sampritirc@gmail.com"))
+    /**
+     * Purpose : This method is used to add extra datas which will give user a proper idea about
+     * the API(Application Programming Interface) information in the Swagger UI(User Interface) console
+     *
+     * @return the swagger API information
+     */
+    private ApiInfo apiInfo() {
+        return new ApiInfoBuilder().title("Employee Payroll Service Application")
+                .description("Sample Documentation Generated Using SWAGGER2 for Employee Payroll Rest API")
+                .termsOfServiceUrl("https://github.com/SRC0747")
+                .license("License")
+                .licenseUrl("https://github.com/SRC0747")
+                .version("1.0")
                 .build();
     }
 }

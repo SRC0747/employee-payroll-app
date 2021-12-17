@@ -45,15 +45,17 @@ class EmployeePayrollServiceTest {
         Employee employee1 = new Employee();
         employee1.setName("Sampriti");
         employee1.setGender("Female");
-        employee1.setDepartment("Backend");
+        employee1.setDepartments((List.of("Cse")));
+        employee1.setJoiningDate("15/01/2021");
         employee1.setSalary((long) 800000.00);
         employee1.setNotes("Regular");
         employeeEntityList.add(employee1);
         Employee employee2 = new Employee();
         employee2.setName("Sreelipta");
         employee2.setGender("Female");
-        employee2.setDepartment("Backend");
-        employee2.setSalary((long) 800000.00);
+        employee2.setDepartments((List.of("Backend")));
+        employee2.setJoiningDate("17/02/2021");
+        employee2.setSalary((long) 823600.00);
         employee2.setNotes("Regular");
         employeeEntityList.add(employee2);
 
@@ -76,7 +78,8 @@ class EmployeePayrollServiceTest {
         Employee employee = new Employee();
         employeeDTO.setName("Sampriti");
         employeeDTO.setGender("Female");
-        employeeDTO.setDepartment("Backend");
+        employeeDTO.setDepartments((List.of("Cse")));
+        employeeDTO.setJoiningDate("15/01/2021");
         employeeDTO.setSalary((long) 36239.25);
         employeeDTO.setNotes("Regular");
         when(employeePayrollBuilder.buildEmployeePayrollEntity(employeeDTO, employee)).thenReturn(employee);
@@ -93,7 +96,8 @@ class EmployeePayrollServiceTest {
         employeeDTO.setName("Sampriti");
         employeeDTO.setSalary(20000);
         employeeDTO.setGender("Female");
-        employeeDTO.setDepartment("CSE");
+        employeeDTO.setDepartments((List.of("Cse")));
+        employeeDTO.setJoiningDate("15/01/2021");
         employeeDTO.setNotes("Regular");
 
         Employee employee = new Employee();
@@ -101,7 +105,8 @@ class EmployeePayrollServiceTest {
         employee.setName("Sampriti");
         employee.setSalary(20000);
         employee.setGender("Female");
-        employee.setDepartment("CSE");
+        employee.setDepartments((List.of("Cse")));
+        employee.setJoiningDate("15/01/2021");
         employee.setNotes("Regular");
 
         when(employeePayrollRepository.findById(employeeId)).thenReturn(Optional.of(employee));
@@ -112,7 +117,7 @@ class EmployeePayrollServiceTest {
         assertEquals(employee.getName(), employeePayrollArgumentCaptor.getValue().getName());
         assertEquals(employee.getSalary(), employeePayrollArgumentCaptor.getValue().getSalary());
         assertEquals(employee.getGender(), employeePayrollArgumentCaptor.getValue().getGender());
-        assertEquals(employee.getDepartment(), employeePayrollArgumentCaptor.getValue().getDepartment());
+        assertEquals(employee.getDepartments(), employeePayrollArgumentCaptor.getValue().getDepartments());
         assertEquals(employee.getNotes(), employeePayrollArgumentCaptor.getValue().getNotes());
 
     }
@@ -123,7 +128,8 @@ class EmployeePayrollServiceTest {
         EmployeeDTO employeeDTO = new EmployeeDTO();
         employeeDTO.setName("Sampriti");
         employeeDTO.setGender("Female");
-        employeeDTO.setDepartment("Backend");
+        employeeDTO.setDepartments((List.of("Cse")));
+        employeeDTO.setJoiningDate("15/01/2021");
         employeeDTO.setSalary((long) 32635.25);
         employeeDTO.setNotes("Regular");
         when(employeePayrollRepository.findById(id)).thenReturn(Optional.empty());
@@ -137,13 +143,13 @@ class EmployeePayrollServiceTest {
         employee.setId(1);
         employee.setName("Rahul");
         employee.setGender("Male");
-        employee.setDepartment("Frontend");
+        employee.setDepartments((List.of("Ece")));
+        employee.setJoiningDate("25/04/2021");
         employee.setSalary((long) 35236.26);
         employee.setNotes("Not Regular");
         when(employeePayrollRepository.findById(id)).thenReturn(Optional.of(employee));
         String actualMessage = employeePayrollService.deleteEmployeePayroll(id);
         assertEquals("Employee details of corresponding id are deleted successfully", actualMessage);
-       // verify(employeePayrollRepository, times(1)).delete(employee);
     }
 
 
