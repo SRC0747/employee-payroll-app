@@ -1,14 +1,11 @@
 package com.bridgelabz.employeepayrollapp.advice;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
@@ -27,7 +24,7 @@ public class LoggingAdvice {
     /**
      * Purpose : This method is used to apply the PointCut(logging mechanism) around the whole application
      */
-    @Pointcut(value="execution(* com.bridgelabz.employeepayrollapp.*.*.*(..) )")
+    @Pointcut(value = "execution(* com.bridgelabz.employeepayrollapp.*.*.*(..) )")
     public void myPointCut() {
 
     }
@@ -47,12 +44,12 @@ public class LoggingAdvice {
         String className = pjp.getTarget().getClass().toString(); //to get the class name
         Object[] array = pjp.getArgs(); //to get the inputs
         //before executing the method invoking method and class name corresponding the arguments
-        log.info("method invoked"+className+" : "+methodName+"()"+"arguments : "
-                +mapper.writeValueAsString(array));
+        log.info("method invoked" + className + " : " + methodName + "()" + "arguments : "
+                + mapper.writeValueAsString(array));
         Object object = pjp.proceed();
         //after executing the method get back the response of that particular class or method
-        log.info(className+" : "+methodName+"()"+"response : "
-                +mapper.writeValueAsString(object));
+        log.info(className + " : " + methodName + "()" + "response : "
+                + mapper.writeValueAsString(object));
         return object;
     }
 }
